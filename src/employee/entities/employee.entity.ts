@@ -12,49 +12,49 @@ import { User } from '../../user/entities/user.entity';
 @Entity()
 export class Employee {
   @PrimaryGeneratedColumn()
-  EmployeeID: number;
+  employeeID: number;
 
-  @OneToOne(() => User, (user) => user.Employee)
+  @OneToOne(() => User, (user) => user.employee)
   @JoinColumn({ name: 'UserID' })
-  User: User;
+  user: User;
 
   @Column()
-  CompanyID: number;
+  companyID: number;
 
   @Column({ length: 100 })
-  FirstName: string;
+  firstName: string;
 
   @Column({ length: 100 })
-  LastName: string;
+  lastName: string;
 
   @Column({ unique: true, length: 255 })
-  Email: string;
+  email: string;
 
   @Column({ length: 20, nullable: true })
-  Phone: string;
+  phone: string;
 
   @Column({ type: 'date' })
-  JoinDate: Date;
+  joinDate: Date;
 
   @Column({ length: 100 })
-  Designation: string;
+  designation: string;
 
   @Column()
-  DepartmentID: number;
+  departmentID: number;
 
   @Column({ type: 'enum', enum: ['Male', 'Female', 'Other'] })
-  Gender: 'Male' | 'Female' | 'Other';
+  gender: 'Male' | 'Female' | 'Other';
 
   @Column({ unique: true, length: 50 })
-  NIDNumber: string;
+  nIDNumber: string;
 
   @Column({ type: 'text', nullable: true })
-  UserPhotoURL: string;
+  userPhotoURL: string;
 
   @CreateDateColumn()
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  UpdatedAt: Date;
+  updatedAt: Date;
   leaveBalances: any;
 }

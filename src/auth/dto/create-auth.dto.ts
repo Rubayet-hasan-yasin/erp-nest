@@ -2,12 +2,13 @@ import {
   IsEmail,
   IsEnum,
   IsNotEmpty,
-  IsObject,
   IsOptional,
   IsPhoneNumber,
   IsString,
   MinLength,
-  Matches,
+  IsArray,
+  ArrayMinSize,
+  IsUrl,
 } from 'class-validator';
 
 export enum UserRole {
@@ -24,7 +25,7 @@ export class CreateAuthDto {
   @IsNotEmpty()
   lastName: string;
 
-  @IsPhoneNumber('BD') // Change 'BD' if needed
+  @IsPhoneNumber('BD')
   @IsNotEmpty()
   phone: string;
 
@@ -34,7 +35,7 @@ export class CreateAuthDto {
 
   @IsString()
   @IsNotEmpty()
-  joinDate: string; // Consider using Date if working with timestamps
+  joinDate: string;
 
   @IsString()
   @MinLength(6)
@@ -42,14 +43,12 @@ export class CreateAuthDto {
   password: string;
 
   @IsString()
+  @IsNotEmpty()
+  gender: string;
+
+  @IsString()
   @MinLength(6)
   @IsNotEmpty()
-  @Matches(/^.*$/, {
-    message: 'Passwords do not match',
-    context: {
-      validate: (value: string, dto: CreateAuthDto) => value === dto.password,
-    },
-  })
   confirmPassword: string;
 
   @IsString()
@@ -60,13 +59,17 @@ export class CreateAuthDto {
   @IsNotEmpty()
   currentAddress: string;
 
-  @IsObject()
+  @IsArray()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @IsUrl({}, { each: true })
   @IsOptional()
-  documentUpload?: object;
+  documentUpload?: string[];
 
-  @IsObject()
-  @IsOptional()
-  userPhoto?: object;
+  @IsString()
+  @IsUrl()
+  @IsNotEmpty()
+  userPhoto: string;
 
   @IsString()
   @IsNotEmpty()
@@ -81,6 +84,6 @@ export class CreateAuthDto {
   othersPhoneNumber?: string;
 
   @IsPhoneNumber('BD')
-  @IsOptional()
-  emergencyContact?: string;
+  @IsNotEmpty()
+  emergencyContact: string;
 }

@@ -12,32 +12,32 @@ import {
 @Entity()
 export class Salary {
   @PrimaryGeneratedColumn()
-  SalaryID: number;
+  salaryID: number;
 
-  @OneToOne(() => Employee, (employee) => employee.EmployeeID, {
+  @OneToOne(() => Employee, (employee) => employee.employeeID, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  Employee: Employee;
+  employee: Employee;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  BasicSalary: number;
+  basicSalary: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  HouseAllowance: number;
+  houseAllowance: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  MedicalAllowance: number;
+  medicalAllowance: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  TransportAllowance: number;
+  transportAllowance: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  OtherAllowances: number;
+  otherAllowances: number;
 
   @CreateDateColumn({ type: 'timestamp' })
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  UpdatedAt: Date;
+  updatedAt: Date;
 }

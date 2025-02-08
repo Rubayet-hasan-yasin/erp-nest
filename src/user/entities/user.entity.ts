@@ -11,32 +11,35 @@ import { Employee } from '../../employee/entities/employee.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  UserID: number;
+  userID: number;
 
   @Column({ length: 100 })
-  FirstName: string;
+  firstName: string;
 
   @Column({ length: 100 })
-  LastName: string;
+  lastName: string;
 
   @Column({ unique: true, length: 255 })
-  Email: string;
+  email: string;
+
+  @Column({ type: 'text' })
+  password: string;
 
   @Column({ length: 20, nullable: true })
-  Phone: string;
+  phone: string;
 
-  @Column({ type: 'enum', enum: ['Male', 'Female', 'Other'] })
-  Gender: 'Male' | 'Female' | 'Other';
+  @Column({ type: 'varchar', length: 10 })
+  gender: string;
 
   @Column({ type: 'text', nullable: true })
-  UserPhotoURL: string;
+  userPhotoURL: string;
 
   @CreateDateColumn()
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  UpdatedAt: Date;
+  updatedAt: Date;
 
-  @OneToOne(() => Employee, (employee) => employee.User)
-  Employee: Employee;
+  @OneToOne(() => Employee, (employee) => employee.user)
+  employee: Employee;
 }

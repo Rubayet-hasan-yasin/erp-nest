@@ -8,7 +8,7 @@ import { DepartmentModule } from './department/department.module';
 import { LeaveModule } from './leave/leave.module';
 import { PayrollModule } from './payroll/payroll.module';
 import { AttendanceModule } from './attendance/attendance.module';
-import { DatabaseModule } from './database/database.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -19,7 +19,17 @@ import { DatabaseModule } from './database/database.module';
     LeaveModule,
     PayrollModule,
     AttendanceModule,
-    DatabaseModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'user',
+      password: 'password',
+      database: 'postgres',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true, // Set to false in production
+      autoLoadEntities: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

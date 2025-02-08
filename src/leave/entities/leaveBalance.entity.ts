@@ -4,37 +4,37 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 @Entity()
 export class LeaveBalance {
   @PrimaryGeneratedColumn()
-  BalanceID: number;
+  balanceID: number;
 
-  @ManyToOne(() => Employee, (employee) => employee.EmployeeID, {
+  @ManyToOne(() => Employee, (employee) => employee.employeeID, {
     onDelete: 'CASCADE',
   })
-  Employee: Employee;
+  employee: Employee;
 
   @Column({ default: 0 })
-  TotalCasual: number;
+  totalCasual: number;
 
   @Column({ default: 0 })
-  UsedCasual: number;
+  usedCasual: number;
 
   @Column({ default: 0 })
-  RemainingCasual: number;
+  remainingCasual: number;
 
   @Column({ default: 0 })
-  TotalSick: number;
+  totalSick: number;
 
   @Column({ default: 0 })
-  UsedSick: number;
+  usedSick: number;
 
   @Column({ default: 0 })
-  RemainingSick: number;
+  remainingSick: number;
 
   @Column({ default: 0 })
-  TotalUnpaid: number;
+  totalUnpaid: number;
 
   @Column({ default: 0 })
-  UsedUnpaid: number;
+  usedUnpaid: number;
 
   @Column({ default: 0 })
-  RemainingUnpaid: number;
+  remainingUnpaid: number;
 }

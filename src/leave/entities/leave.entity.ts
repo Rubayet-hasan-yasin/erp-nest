@@ -26,40 +26,40 @@ export enum LeaveStatus {
 @Entity()
 export class Leave {
   @PrimaryGeneratedColumn()
-  LeaveID: number;
+  leaveID: number;
 
-  @ManyToOne(() => Employee, (employee) => employee.EmployeeID, {
+  @ManyToOne(() => Employee, (employee) => employee.employeeID, {
     onDelete: 'CASCADE',
   })
-  Employee: Employee;
+  employee: Employee;
 
   @Column()
-  CompanyID: number;
+  companyID: number;
 
   @Column({ type: 'date' })
-  StartDate: Date;
+  startDate: Date;
 
   @Column({ type: 'date' })
-  EndDate: Date;
+  endDate: Date;
 
   @Column({ type: 'enum', enum: LeaveType })
-  LeaveType: LeaveType;
+  leaveType: LeaveType;
 
   @Column({ type: 'enum', enum: LeaveStatus, default: LeaveStatus.PENDING })
-  Status: LeaveStatus;
+  status: LeaveStatus;
 
   @Column({ type: 'json', nullable: true })
-  Application: object;
+  application: object;
 
   @Column({ type: 'text', nullable: true })
-  Reason: string;
+  reason: string;
 
   @Column({ type: 'text', nullable: true })
-  Remarks: string;
+  remarks: string;
 
   @CreateDateColumn({ type: 'timestamp' })
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  UpdatedAt: Date;
+  updatedAt: Date;
 }

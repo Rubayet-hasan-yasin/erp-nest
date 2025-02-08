@@ -11,44 +11,44 @@ export enum AttendanceStatus {
 @Entity()
 export class Attendance {
   @PrimaryGeneratedColumn()
-  AttendanceID: number;
+  attendanceID: number;
 
-  @ManyToOne(() => Employee, (employee) => employee.EmployeeID, {
+  @ManyToOne(() => Employee, (employee) => employee.employeeID, {
     onDelete: 'CASCADE',
   })
-  Employee: Employee;
+  employee: Employee;
 
   @Column({ type: 'date' })
-  Date: Date;
+  date: Date;
 
   @Column({ type: 'time', nullable: true })
-  ClockIn: string;
+  clockIn: string;
 
   @Column({ type: 'time', nullable: true })
-  ClockOut: string;
+  clockOut: string;
 
   @Column({ default: false })
-  Late: boolean;
+  late: boolean;
 
   @Column({ default: false })
-  Absent: boolean;
+  absent: boolean;
 
   @Column({ type: 'text', nullable: true })
-  Remarks: string;
+  remarks: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  Location: string;
+  location: string;
 
   @Column({ type: 'text', nullable: true })
-  Task: string;
+  task: string;
 
   @Column({
     type: 'enum',
     enum: AttendanceStatus,
     default: AttendanceStatus.PRESENT,
   })
-  Status: AttendanceStatus;
+  status: AttendanceStatus;
 
   @Column({ type: 'varchar', length: 45, nullable: true })
-  IPAddress: string;
+  iPAddress: string;
 }

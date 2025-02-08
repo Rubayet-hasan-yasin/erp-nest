@@ -16,36 +16,36 @@ export enum PaymentStatus {
 @Entity()
 export class Payroll {
   @PrimaryGeneratedColumn()
-  PayrollID: number;
+  payrollID: number;
 
-  @ManyToOne(() => Employee, (employee) => employee.EmployeeID, {
+  @ManyToOne(() => Employee, (employee) => employee.employeeID, {
     onDelete: 'CASCADE',
   })
   @JoinColumn()
-  Employee: Employee;
+  employee: Employee;
 
-  @ManyToOne(() => Salary, (salary) => salary.SalaryID, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Salary, (salary) => salary.salaryID, { onDelete: 'CASCADE' })
   @JoinColumn()
-  Salary: Salary;
+  salary: Salary;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  GrossSalary: number;
+  grossSalary: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  Bonus: number;
+  bonus: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  Deductions: number;
+  deductions: number;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  NetSalary: number;
+  netSalary: number;
 
   @Column({ type: 'integer' })
-  PayYear: number;
+  payYear: number;
 
   @Column({ type: 'date' })
-  PayDate: Date;
+  payDate: Date;
 
   @Column({ type: 'enum', enum: PaymentStatus, default: PaymentStatus.PENDING })
-  PaymentStatus: PaymentStatus;
+  paymentStatus: PaymentStatus;
 }

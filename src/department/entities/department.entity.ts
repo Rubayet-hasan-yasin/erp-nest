@@ -11,21 +11,21 @@ import {
 @Entity()
 export class Department {
   @PrimaryGeneratedColumn()
-  DepartmentID: number;
+  departmentID: number;
 
-  @OneToOne(() => Employee, (employee) => employee.DepartmentID)
+  @OneToOne(() => Employee, (employee) => employee.departmentID)
   @Column()
-  CompanyID: number;
+  companyID: number;
 
   @Column({ length: 100 })
-  DepartmentName: string;
+  departmentName: string;
 
   @Column({ length: 50, unique: true })
-  DepartmentCode: string;
+  departmentCode: string;
 
   @CreateDateColumn({ type: 'timestamp' })
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  UpdatedAt: Date;
+  updatedAt: Date;
 }

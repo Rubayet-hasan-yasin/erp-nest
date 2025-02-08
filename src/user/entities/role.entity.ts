@@ -16,14 +16,14 @@ export enum RoleName {
 @Entity()
 export class Role {
   @PrimaryGeneratedColumn()
-  RoleID: number;
+  roleID: number;
 
   @Column({ type: 'enum', enum: RoleName })
-  RoleName: RoleName;
+  roleName: RoleName;
 
   @CreateDateColumn({ type: 'timestamp' })
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  UpdatedAt: Date;
+  updatedAt: Date;
 }

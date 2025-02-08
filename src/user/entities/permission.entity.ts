@@ -11,17 +11,17 @@ import { Role } from './role.entity';
 @Entity()
 export class Permission {
   @PrimaryGeneratedColumn()
-  PermissionID: number;
+  permissionID: number;
 
-  @ManyToMany(() => Role, (role) => role.RoleID, { onDelete: 'CASCADE' })
-  Role: Role;
+  @ManyToMany(() => Role, (role) => role.roleID, { onDelete: 'CASCADE' })
+  role: Role;
 
   @Column({ type: 'varchar', length: 255 })
-  PermissionName: string;
+  permissionName: string;
 
   @CreateDateColumn({ type: 'timestamp' })
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  UpdatedAt: Date;
+  updatedAt: Date;
 }
