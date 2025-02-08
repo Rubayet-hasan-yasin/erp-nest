@@ -1,9 +1,11 @@
+import { Employee } from 'src/employee/entities/employee.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
 } from 'typeorm';
 
 @Entity()
@@ -11,6 +13,7 @@ export class Department {
   @PrimaryGeneratedColumn()
   DepartmentID: number;
 
+  @OneToOne(() => Employee, (employee) => employee.DepartmentID)
   @Column()
   CompanyID: number;
 

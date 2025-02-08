@@ -8,6 +8,7 @@ import { DepartmentModule } from './department/department.module';
 import { LeaveModule } from './leave/leave.module';
 import { PayrollModule } from './payroll/payroll.module';
 import { AttendanceModule } from './attendance/attendance.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AttendanceModule } from './attendance/attendance.module';
     LeaveModule,
     PayrollModule,
     AttendanceModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -40,8 +40,8 @@ export class Payroll {
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
   NetSalary: number;
 
-  @Column({ type: 'year' })
-  PayMonth: string;
+  @Column({ type: 'integer' })
+  PayYear: number;
 
   @Column({ type: 'date' })
   PayDate: Date;
