@@ -15,11 +15,11 @@ export class Employee {
   employeeID: number;
 
   @OneToOne(() => User, (user) => user.employee)
-  @JoinColumn({ name: 'UserID' })
+  @JoinColumn({ name: 'userID' })
   user: User;
 
   @Column()
-  companyID: number;
+  companyId: number;
 
   @Column({ length: 100 })
   firstName: string;
@@ -27,11 +27,23 @@ export class Employee {
   @Column({ length: 100 })
   lastName: string;
 
+  @Column({ length: 255 })
+  currentAddress: string;
+
+  @Column({ length: 255 })
+  permanentAddress: string;
+
   @Column({ unique: true, length: 255 })
   email: string;
 
   @Column({ length: 20, nullable: true })
   phone: string;
+
+  @Column({ length: 20, nullable: true })
+  emergencyContact: string;
+
+  @Column({ length: 20, nullable: true })
+  othersPhoneNumber: string;
 
   @Column({ type: 'date' })
   joinDate: Date;
@@ -40,13 +52,10 @@ export class Employee {
   designation: string;
 
   @Column()
-  departmentID: number;
+  departmentId: number;
 
   @Column({ type: 'enum', enum: ['Male', 'Female', 'Other'] })
   gender: 'Male' | 'Female' | 'Other';
-
-  @Column({ unique: true, length: 50 })
-  nIDNumber: string;
 
   @Column({ type: 'text', nullable: true })
   userPhotoURL: string;

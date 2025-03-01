@@ -9,6 +9,7 @@ import {
   IsArray,
   ArrayMinSize,
   IsUrl,
+  IsNumber,
 } from 'class-validator';
 
 export enum UserRole {
@@ -35,21 +36,28 @@ export class CreateAuthDto {
 
   @IsString()
   @IsNotEmpty()
-  joinDate: string;
+  joinDate: Date;
+
+  @IsString()
+  @IsNotEmpty()
+  designation: string;
 
   @IsString()
   @MinLength(6)
   @IsNotEmpty()
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
-  gender: string;
+  @IsEnum(['Male', 'Female', 'Other'])
+  gender: 'Male' | 'Female' | 'Other';
 
   @IsString()
   @MinLength(6)
   @IsNotEmpty()
   confirmPassword: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  companyId: number;
 
   @IsString()
   @IsNotEmpty()
@@ -71,9 +79,9 @@ export class CreateAuthDto {
   @IsNotEmpty()
   userPhoto: string;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  department: string;
+  departmentId: number;
 
   @IsEnum(UserRole)
   @IsNotEmpty()

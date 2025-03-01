@@ -37,4 +37,7 @@ export class LeaveBalance {
 
   @Column({ default: 0 })
   remainingUnpaid: number;
+
+  @Column({ default: 0 })
+  balance: number;
 }

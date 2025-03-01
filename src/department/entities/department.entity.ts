@@ -13,7 +13,7 @@ export class Department {
   @PrimaryGeneratedColumn()
   departmentID: number;
 
-  @OneToOne(() => Employee, (employee) => employee.departmentID)
+  @OneToOne(() => Employee, (employee) => employee.departmentId)
   @Column()
   companyID: number;
 
