@@ -14,7 +14,7 @@ export class Employee {
   @PrimaryGeneratedColumn()
   employeeID: number;
 
-  @OneToOne(() => User, (user) => user.employee)
+  @OneToOne(() => User, (user) => user.employee, { cascade: true, eager: true })
   @JoinColumn({ name: 'userID' })
   user: User;
 
@@ -65,5 +65,4 @@ export class Employee {
 
   @UpdateDateColumn()
   updatedAt: Date;
-  leaveBalances: any;
 }

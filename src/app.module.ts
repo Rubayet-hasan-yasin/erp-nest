@@ -25,7 +25,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       port: 5432,
       username: 'postgres',
       password: 'password1234',
-      database: 'postgres',
+      database: 'ERP',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // Set to false in production
       autoLoadEntities: true,
